@@ -1,0 +1,3 @@
+[submodule "route53-dynamic-dns-with-lambda"]
+	path = route53-dynamic-dns-with-lambda
+	url = https://github.com/awslabs/route53-dynamic-dns-with-lambda
