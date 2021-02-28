@@ -3,7 +3,15 @@
 Route53 Dynamic DNS support for the UDM and UDM Pro, using [boostchicken's on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) and the [awslabs Route53 Dynamic DNS stack](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
 
 ## Requirements
-UniFi Dream Machine (UDM) or Dream Machine Pro (UDMP) running firmware 1.6.4+ (required for [on_boot.d support](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script)).
+* UniFi Dream Machine (UDM) or Dream Machine Pro (UDMP) running firmware 1.6.4+ (required for [on_boot.d support](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script)).
+* (Optional) Docker, for building your own image.
+
+## Building
+If you do not build your own image, the default will be used, as shown in the [example config](#Example-config).
+* Clone this repository with `--recurse-submodules`
+* Run [`docker-build.sh`](docker-build.sh)
+* Tag `route53-ddns:unifi` to your remote repository and `docker push`
+* During [Installation](#Installation), set `DDNS_IMAGE` in your config file.
 
 ## Installation
 * Set up the DDNS Lambda using the [awslabs CloudFormation template](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
@@ -58,4 +66,8 @@ DDNS_IPVERSIONS="ipv4,ipv6"
 # Less or equal to the TTL configured in DynamoDB
 # Defaults to: 60
 DDNS_TTL=""
+
+# (Optional) Replace this with your own image built from this repo
+# Defaults to: josephvusich/route53-ddns:unifi
+DDNS_IMAGE=""
 ```
