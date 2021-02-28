@@ -34,5 +34,6 @@ while true; do
       --url "$DDNS_URL" \
       --ip-version "$i"
   done
+  echo Update finished $(date)
   sleep "$DDNS_TTL"
 done
