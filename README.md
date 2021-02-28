@@ -22,6 +22,12 @@ To update to a new version:
 * `chmod +x /mnt/data/on_boot.d/53-route53-ddns.sh`
 * Run `/mnt/data/on_boot.d/53-route53-ddns.sh`
 
+## Checking status
+To check status of the container:
+* SSH to the UDM.
+* `docker ps` should show the `route53-ddns` container, if running.
+* `docker logs route53-ddns` to show the container log.
+
 ## Example config
 ```
 # apiKey from CloudFormation Outputs
