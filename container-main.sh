@@ -22,6 +22,8 @@ if [ -z "$DDNS_IPVERSIONS" ]; then
   exit 1
 fi
 
+if [ -z "$DDNS_TTL" ]; then DDNS_TTL="60"; fi
+
 while true; do
   for i in $(echo "$DDNS_IPVERSIONS" | sed "s/,/ /g"); do
     echo "Updating $i..."
@@ -32,5 +34,5 @@ while true; do
       --url "$DDNS_URL" \
       --ip-version "$i"
   done
-  sleep 60
+  sleep "$DDNS_TTL"
 done

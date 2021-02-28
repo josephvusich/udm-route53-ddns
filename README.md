@@ -28,4 +28,9 @@ DDNS_URL=""
 # 'ipv4' = A record
 # 'ipv6' = AAAA record
 DDNS_IPVERSIONS="ipv4,ipv6"
+
+# (Optional) Refresh rate in seconds
+# Less or equal to the TTL configured in DynamoDB
+# Defaults to: 60
+DDNS_TTL=""
 ```
