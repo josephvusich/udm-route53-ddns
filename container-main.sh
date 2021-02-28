@@ -35,5 +35,6 @@ while true; do
       --ip-version "$i"
   done
   echo Update finished $(date)
+  echo Next update in ${DDNS_TTL}s.
   sleep "$DDNS_TTL"
 done
