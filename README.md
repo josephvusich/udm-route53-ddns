@@ -1,5 +1,10 @@
 # udm-route53-ddns
 
+Route53 Dynamic DNS support for the UDM and UDM Pro, using [boostchicken's on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) and the [awslabs Route53 Dynamic DNS stack](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
+
+## Requirements
+UniFi Dream Machine (UDM) or Dream Machine Pro (UDMP) running firmware 1.6.4+ (required for [on_boot.d support](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script)).
+
 ## Installation
 * Set up the DDNS Lambda using the [awslabs CloudFormation template](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
 * Install the [on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) on the UDM.
