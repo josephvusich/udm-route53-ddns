@@ -5,8 +5,22 @@
 * Install the [on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) on the UDM.
 * Copy the [on_boot.d script from this repo](on_boot.d/53-route53-ddns.sh) to `/mnt/data/on_boot.d/`
 * `chmod +x /mnt/data/on_boot.d/53-route53-ddns.sh`
-* Create config on UDM at `/mnt/data/route53-ddns/config`
+* Create config on UDM at `/mnt/data/route53-ddns/config`. See the [example config](#Example-config).
 * Run `/mnt/data/on_boot.d/53-route53-ddns.sh` or reboot the UDM.
+
+## Modifying config
+To apply changes to `/mnt/data/route53-ddns/config` without rebooting:
+* SSH to the UDM.
+* `podman restart route53-ddns`
+
+## Updating
+To update to a new version:
+* SSH to the UDM.
+* `podman stop route53-ddns`
+* `docker rmi route53-ddns:unifi`
+* Copy the [on_boot.d script from this repo](on_boot.d/53-route53-ddns.sh) to `/mnt/data/on_boot.d/`
+* `chmod +x /mnt/data/on_boot.d/53-route53-ddns.sh`
+* Run `/mnt/data/on_boot.d/53-route53-ddns.sh`
 
 ## Example config
 ```
