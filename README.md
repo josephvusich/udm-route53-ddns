@@ -16,6 +16,7 @@ If you do not build your own image, the default will be used, as shown in the [e
 ## Installation
 * Set up the DDNS Lambda using the [awslabs CloudFormation template](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
 * Install the [on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) on the UDM.
+* Install [container-common](https://github.com/boostchicken/udm-utilities/tree/master/container-common) to limit container log size and avoid filling the UDM's storage.
 * Copy the [on_boot.d script from this repo](on_boot.d/53-route53-ddns.sh) to `/mnt/data/on_boot.d/`
 * `chmod +x /mnt/data/on_boot.d/53-route53-ddns.sh`
 * Create config on UDM at `/mnt/data/route53-ddns/config`. See the [example config](#Example-config).
