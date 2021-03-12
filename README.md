@@ -11,19 +11,20 @@ If you do not build your own image, the default will be used, as shown in the [e
 * Clone this repository with `--recurse-submodules`
 * Run [`docker-build.sh`](docker-build.sh)
 * Tag `route53-ddns:unifi` to your remote repository and `docker push`
-* During [Installation](#Installation), set `DDNS_IMAGE` in your config file.
+* During [Installation](#Installation), set `DDNS_IMAGE` in your [global config](#Global-config) file.
 
 ## Installation
-* Set up the DDNS Lambda using the [awslabs CloudFormation template](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
+* Set up a DDNS endpoint for each domain, using the [awslabs CloudFormation template](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
 * Install the [on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) on the UDM.
 * Install [container-common](https://github.com/boostchicken/udm-utilities/tree/master/container-common) to limit container log size and avoid filling the UDM's storage.
 * Copy the [on_boot.d script from this repo](on_boot.d/53-route53-ddns.sh) to `/mnt/data/on_boot.d/`
 * `chmod +x /mnt/data/on_boot.d/53-route53-ddns.sh`
-* Create config on UDM at `/mnt/data/route53-ddns/config`. See the [example config](#Example-config).
+* (Optional) If using a custom Docker image, set `DDNS_IMAGE` in the [global config](#Global-config) file.
+* Create `${DOMAIN}.cfg` for each domain. See the [per-domain config](#Per-domain-config) for an example.
 * Run `/mnt/data/on_boot.d/53-route53-ddns.sh` or reboot the UDM.
 
 ## Modifying config
-To apply changes to `/mnt/data/route53-ddns/config` without rebooting:
+To apply configuration changes without rebooting:
 * SSH to the UDM.
 * `podman restart route53-ddns`
 
@@ -43,7 +44,23 @@ To check status of the container:
 * `docker logs route53-ddns` to show the container log.
 
 ## Example config
+### Global config
 ```
+# /mnt/data/route53-ddns/config
+
+# (Optional) Replace this with your own image built from this repo
+# Defaults to: josephvusich/route53-ddns:unifi
+DDNS_IMAGE=""
+
+# Per-domain configuration now lives in separate .cfg files. For
+# backwards-compatibility, the global config file is still checked
+# for a valid domain configuration.
+```
+
+### Per-domain config
+```
+# /mnt/data/route53-ddns/*.cfg
+
 # apiKey from CloudFormation Outputs
 DDNS_API_KEY=""
 
@@ -67,8 +84,4 @@ DDNS_IPVERSIONS="ipv4,ipv6"
 # Less or equal to the TTL configured in DynamoDB
 # Defaults to: 60
 DDNS_TTL=""
-
-# (Optional) Replace this with your own image built from this repo
-# Defaults to: josephvusich/route53-ddns:unifi
-DDNS_IMAGE=""
 ```

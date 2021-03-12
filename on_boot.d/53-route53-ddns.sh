@@ -1,8 +1,12 @@
 #!/bin/sh
 
 CONTAINER=route53-ddns
+CONFIG=/mnt/data/route53-ddns/config
 
-. /mnt/data/route53-ddns/config
+if [ -f "$CONFIG" ]; then
+  . /mnt/data/route53-ddns/config
+fi
+
 if [ -z "$DDNS_IMAGE" ]; then DDNS_IMAGE="josephvusich/route53-ddns:unifi"; fi
 
 if podman container exists "$CONTAINER"; then
