@@ -20,7 +20,7 @@ If you do not build your own image, the default will be used, as shown in the [e
 * Copy the [on_boot.d script from this repo](on_boot.d/53-route53-ddns.sh) to `/mnt/data/on_boot.d/`
 * `chmod +x /mnt/data/on_boot.d/53-route53-ddns.sh`
 * (Optional) If using a custom Docker image, set `DDNS_IMAGE` in the [global config](#Global-config) file.
-* Create `${DOMAIN}.cfg` for each domain. See the [per-domain config](#Per-domain-config) for an example.
+* Create `${DOMAIN}.conf` for each domain. See the [per-domain config](#Per-domain-config) for an example.
 * Run `/mnt/data/on_boot.d/53-route53-ddns.sh` or reboot the UDM.
 
 ## Modifying config
@@ -52,14 +52,14 @@ To check status of the container:
 # Defaults to: josephvusich/route53-ddns:unifi
 DDNS_IMAGE=""
 
-# Per-domain configuration now lives in separate .cfg files. For
+# Per-domain configuration now lives in separate .conf files. For
 # backwards-compatibility, the global config file is still checked
 # for a valid domain configuration.
 ```
 
 ### Per-domain config
 ```
-# /mnt/data/route53-ddns/*.cfg
+# /mnt/data/route53-ddns/*.conf
 
 # apiKey from CloudFormation Outputs
 DDNS_API_KEY=""
