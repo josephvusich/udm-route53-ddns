@@ -45,7 +45,7 @@ To check status of the container:
 
 ## Example config
 ### Global config
-```
+```sh
 # /mnt/data/route53-ddns/config
 
 # (Optional) Replace this with your own image built from this repo
@@ -58,7 +58,7 @@ DDNS_IMAGE=""
 ```
 
 ### Per-domain config
-```
+```sh
 # /mnt/data/route53-ddns/*.conf
 
 # apiKey from CloudFormation Outputs
@@ -78,6 +78,7 @@ DDNS_URL=""
 # Comma-delimited list of IP versions
 # 'ipv4' = A record
 # 'ipv6' = AAAA record
+# Both records must have the same ${DDNS_SECRET}
 DDNS_IPVERSIONS="ipv4,ipv6"
 
 # (Optional) Refresh rate in seconds
