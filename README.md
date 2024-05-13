@@ -1,3 +1,6 @@
+> [!CAUTION]
+> _This project has only been tested against UDM 1.x firmware, and is no longer actively maintained. For firmware versions 2.x and up, see https://github.com/micahhausler/route53-dynamic-dns instead._
+
 # udm-route53-ddns
 
 Route53 Dynamic DNS support for the UDM and UDM Pro, using [boostchicken's on_boot.d package](https://github.com/boostchicken/udm-utilities/tree/master/on-boot-script) and the [awslabs Route53 Dynamic DNS stack](https://github.com/awslabs/route53-dynamic-dns-with-lambda).
