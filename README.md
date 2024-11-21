@@ -1,5 +1,5 @@
 > [!CAUTION]
-> _This project has only been tested against UDM 1.x firmware, and is no longer actively maintained. For firmware versions 2.x and up, see https://github.com/micahhausler/route53-dynamic-dns instead._
+> _This project has only been tested against UDM 1.x firmware, and is no longer actively maintained. For firmware versions 2.x and up, see https://github.com/micahhausler/route53-dynamic-dns or https://github.com/nckslvrmn/unifi_ddns_route53 instead._
 
 # udm-route53-ddns
 
